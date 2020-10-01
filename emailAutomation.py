@@ -8,6 +8,8 @@ ist = pytz.timezone('Asia/Kolkata')
 
 currentDate = datetime.date(datetime.now(tz=ist)).strftime('%d')
 
+//You can change 1 and 2 to respective dates of the month
+
 tenantDate = '1'
 ownerDate = '2'
 
