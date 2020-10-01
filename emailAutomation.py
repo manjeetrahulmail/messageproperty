@@ -2,6 +2,8 @@ import requests
 import pytz
 from datetime import datetime
 
+// Setting the timezone to Asia/Kolkata
+
 ist = pytz.timezone('Asia/Kolkata')
 
 currentDate = datetime.date(datetime.now(tz=ist)).strftime('%d')
