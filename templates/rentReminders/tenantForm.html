@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'brad/css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'brad/css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'brad/css/style.css' %}">
+
+  <title>Message Property - Rent Reminders</title>
+
+  <style>
+    input::-webkit-inner-spin-button, input::-webkit-outer-spin-button
+    {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number]
+    {
+        -moz-appearance: textfield;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header text-white" style="background-color: #30caa0;">
+              <h4>
+                <i class="fa fa-bell"></i> Create a Rent Reminder</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+
+                    {% csrf_token %}
+
+                    {% include 'partials/_alert.html' %}
+
+                  <div class="form-group">
+                  <label for="_name">Your Name</label>
+                  <input type="text" name="userName" class="form-control" id="_name" required>
+                </div>
+                <div class="form-group">
+                  <label for="_email">Your Email</label>
+                  <input type="email" name="userEmail" class="form-control" id="_email" required>
+                </div>
+                <div class="form-group">
+                  <label for="_whatsapp">Your Whatsapp Number</label>
+                  <input type="number" name="whatsapp" class="form-control" id="_whatsapp" required>
+                </div>
+                <div class="form-group">
+                  <label for="tenant_email">Enter your tenant's Email</label>
+                  <input type="email" name="tenantEmail" class="form-control" id="tenant_email" required>
+                </div>
+                <input type="submit" value="Set Reminder" class="btn btn-block text-white" style="background-color: #4285f4;">
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="margin: 2.5rem;">&nbsp;</div>
+
+  <!-- Footer -->
+  <footer id="main-footer" class="py-4 text-white text-center" style="background-color: #30caa0;">
+    Copyright &copy;
+    <span class="year"></span> Message Property
+  </footer>
+
+  <script src="{% static 'brad/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'brad/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'brad/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,1691 @@
+{% load static %}
+
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <title>Message Property</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="theme-color" content="#4285f4" />
+
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <button class = "btn btn-sm btn-primary fixed_right_button shadow-none" id = "help_btn">Install Our App</button>
+
+    <!-- Modal is not needed -->
+    <!-- <div id="help_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            Modal content
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Report/Edit <small>Write to Us!</small></h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row mt-3">
+                            <div class = "col-12">
+                                <h6>Report/Edit(write your query to report property profile listing as a seeker if its inappropriate or request edit in it as owner/poster if anything needs to be changed)</h6>
+                            </div>
+                            <div class = "col-12">
+                                <textarea class = "help_input" id = "question" name = "question" rows = "4"></textarea>
+                            </div>
+                        </div>
+                        <div class = "form-row mt-3">
+                            <div class = "col-12 col-md-6">
+                                <div class = "row row-content">
+                                    <div class = "col-12">
+                                        <h6>E-mail</h6>
+                                    </div>
+                                </div>
+                                <div class = "row row-content">
+                                    <div class = "col-12">
+                                        <input class = "help_input" type = "email" name = "email" id = "email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "col-12 col-md-6">
+                                <div class = "row row-content">
+                                    <div class = "col-12">
+                                        <h6>Whatsapp Number</h6>
+                                    </div>
+                                </div>
+                                <div class = "row row-content">
+                                    <div class = "col-12">
+                                        <input class = "help_input" type = "text" name = "mobile" id = "mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "form-row mt-3" style = "background-color : #f5f5f5">
+                            <div class = "col-12">
+                                <div class = "row row-content">
+                                    <div class = "col-12">
+                                        <h6>Frequently Asked questions</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "row row-content">
+                                <div class = "col-12">
+                                    <ul class = "list-unstyled ml-2">
+                                        <li><a style = "font-size : 12px;" href = "#">How can I contact you or meet you?</a></li>
+                                        <li><a style = "font-size : 12px;" href = "#">How do I get started on Message Property?</a></li>
+                                        <li><a style = "font-size : 12px;" href = "#">How successful has Message Property been in helping its users successfully close a deal?</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto"><i class = "fa fa-camera"></i> Screenshot</button>
+                            <button type="submit" class="btn btn-secondary btn-sm ml-1"><i class = "fa fa-paperclip"></i> Attach File</button>
+                            <button type="submit" class="btn btn-success btn-sm ml-1">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    {% include 'partials/_navbar.html' %}
+
+    <header class="jumbotron pb-0 px-0" id = "home_header">
+        <div class="container">
+            <div class = "row row-content">
+                <div class = "col-12 mt-5" style = "text-align : center">
+                    <h1>Fast & Easy</h1>
+                    <p class = "mb-5">
+                        Explore residential properties through whatsapp messaging.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class = "vh-100" id = "get_started">
+            <div class = "row row-content" style = "text-align : center">
+                <div class = "col-12 pt-4">
+                    <h3>Get Started</h3>
+                </div>
+                <div class = "col-12 col-md-4 pb-3 pb-md-5 px-5">
+                    <p>Selling or Renting as Owner</p>
+
+                    <a type = "button" class = "btn btn-block btn-info" href = "{% url 'register' %}">Create Property Profile</a>
+                </div>
+                <div class = "col-12 col-md-4 pb-3 pb-md-5 px-5">
+                    <p>Looking to grow your property brand?</p>
+
+                    <a type = "button" class = "btn btn-block btn-warning" href = "{% url 'register' %}">Create Business Profile</a>
+                </div>
+                <div class = "col-12 col-md-4 pb-5 px-5">
+                    <p>Are you a housing seeker?</p>
+
+                    <a type = "button" class = "btn btn-block btn-success" href = "{% url 'listings' %}">Browse as Seeker</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        {% include 'partials/_alert.html' %}
+
+        <div class = "row row-content py-5">
+
+
+            <div class="col-12 col-md-5">
+                <h3 class = "d-md-none text-center">Property Profile Listings Marketplace</h3>
+                {% if properties %}
+                    <div id="business_carousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+                        <div class="carousel-inner row row-content m-0" role="listbox">
+
+                                {% for listing in properties %}
+
+                                    {% if forloop.counter == 1 %}
+
+                                        <div class = "carousel-item col-12 active">
+                                            <div class="card container">
+                                                {% if listing.isVerified %}
+                                                <p class="ribbon">
+                                                        Prime
+                                                </p>
+                                                {% endif %}
+                                                <div class="row row-content">
+                                                    <div class = "col-11 mt-2 card_name text-info">
+                                                        <p>In {{ listing.locality }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content">
+                                                    <div class = "col-9 text-secondary card_description">
+
+                                                        <!-- <strong>Details</strong> -->
+
+                                                        <br>
+                                                        <strong>Connection</strong> : {{ listing.connectionType }}
+                                                        <br>
+                                                        <strong>Offer Type</strong> : {{ listing.offerType }}
+
+                                                        <br>
+                                                        <br>
+
+                                                        {% if listing.description %}
+                                                        <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class = "col-3 pl-0 card_img">
+                                                        <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content">
+                                                    <div class = "col-4">
+                                                        <p> <a href="{% url 'report' %}"><u>Report</u></a></p>
+                                                    </div>
+                                                    <div class = "col-6">
+                                                        <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                                    </div>
+
+                                                    {% if listing.media %}
+
+                                                    <div class = "col-2">
+                                                        <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                                    </div>
+
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>
+                                                            Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                            <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>Property Type
+                                                        <span class = "pull-right" style = "color : black">
+
+                                                            {% if listing.propertyType %}
+                                                                {{ listing.propertyType }}
+                                                            {% elif listing.numPropertyType >= 0 %}
+                                                                {% if listing.one_bhk %}
+                                                                    1 BHK
+                                                                {% elif listing.two_bhk%}
+                                                                    2 BHK
+                                                                {% elif listing.three_bhk%}
+                                                                    3 BHK
+                                                                {% elif listing.four_bhk%}
+                                                                    4 BHK
+                                                                {% elif listing.fivePlus_bhk%}
+                                                                    5+ BHK
+                                                                {% endif %}
+
+                                                                {% if listing.numPropertyType > 0 %}
+                                                                + {{ listing.numPropertyType  }} more
+                                                                {% endif %}
+
+                                                            {% else %}
+                                                                -
+                                                            {% endif %}
+
+                                                        </span></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>Pricing
+                                                            <span class = "pull-right" style = "color : black">
+
+                                                                {% if listing.price %}
+                                                                    INR {{ listing.price | intcomma }}
+                                                                {% else %}
+                                                                    N/A
+                                                                {% endif %}
+
+                                                            </span></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class = "row row-content">
+                                                    <div class = "col-12 mr-2 mt-1">
+                                                        <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                            {% url 'listing' listing.whatsapp %}"
+
+                                                            style="text-decoration: none; color: black">Explore</a></button>
+                                                        <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left" id="whatsappBtn-{{ forloop.counter}}">Whatsapp</button>
+
+                                        <script>
+                                            document.getElementById('whatsappBtn-{{ forloop.counter }}').addEventListener('click', () => {
+                                                window.location.href = 'https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it'
+                                            })
+                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class = "carousel-item col-12">
+                                            <div class="card container">
+                                                {% if listing.isVerified %}
+                                                <p class="ribbon">
+                                                        Prime
+                                                </p>
+                                                {% endif %}
+                                                <div class="row row-content">
+                                                    <div class = "col-11 mt-2 card_name text-info">
+                                                        <p>In {{ listing.locality }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content">
+                                                    <div class = "col-9 text-secondary card_description">
+
+                                                        <!-- <strong>Details</strong> -->
+
+                                                        <br>
+                                                        <strong>Connection</strong> : {{ listing.connectionType }}
+                                                        <br>
+                                                        <strong>Offer Type</strong> : {{ listing.offerType }}
+
+                                                        <br>
+                                                        <br>
+
+                                                        {% if listing.description %}
+                                                        <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class = "col-3 pl-0 card_img">
+                                                        <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content">
+                                                    <div class = "col-4">
+                                                        <p> <a href="{% url 'report' %}"><u>Report</u></a></p>
+                                                    </div>
+                                                    <div class = "col-6">
+                                                        <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                                    </div>
+
+                                                    {% if listing.media %}
+
+                                                    <div class = "col-2">
+                                                        <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                                    </div>
+
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>
+                                                            Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                            <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>Property Type
+                                                        <span class = "pull-right" style = "color : black">
+
+                                                            {% if listing.propertyType %}
+                                                                {{ listing.propertyType }}
+                                                            {% elif listing.numPropertyType >= 0 %}
+                                                                {% if listing.one_bhk %}
+                                                                    1 BHK
+                                                                {% elif listing.two_bhk%}
+                                                                    2 BHK
+                                                                {% elif listing.three_bhk%}
+                                                                    3 BHK
+                                                                {% elif listing.four_bhk%}
+                                                                    4 BHK
+                                                                {% elif listing.fivePlus_bhk%}
+                                                                    5+ BHK
+                                                                {% endif %}
+
+                                                                {% if listing.numPropertyType > 0 %}
+                                                                + {{ listing.numPropertyType  }} more
+                                                                {% endif %}
+
+                                                            {% else %}
+                                                                -
+                                                            {% endif %}
+
+                                                        </span></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class = "row row-content card_table">
+                                                    <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                                        <p>Pricing
+                                                            <span class = "pull-right" style = "color : black">
+
+                                                                {% if listing.price %}
+                                                                    INR {{ listing.price | intcomma }}
+                                                                {% else %}
+                                                                    N/A
+                                                                {% endif %}
+
+                                                            </span></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class = "row row-content">
+                                                    <div class = "col-12 mr-2 mt-1">
+                                                        <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                            {% url 'listing' listing.whatsapp %}"
+
+                                                            style="text-decoration: none; color: black">Explore</a></button>
+                                                        <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left" id="whatsappBtn-{{ forloop.counter}}">Whatsapp</button>
+
+                                        <script>
+                                            document.getElementById('whatsappBtn-{{ forloop.counter }}').addEventListener('click', () => {
+                                                window.location.href = 'https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it'
+                                            })
+                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            <a class="carousel-control-prev" href="#business_carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#business_carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class = "col-12 col-md-7 mt-2 align-self-center">
+                    <h3 class = "d-none d-md-block">Property Profiles Listings Marketplace</h3>
+                    <p class = "text-secondary">
+                        Property seekers can browse various property profiles for resale & rent directly listed by owners,brokers,colivings & service apartments .
+
+                    </p>
+                    <a role = "button" class = "btn btn-success" href = "{% url 'listings' %}">View All Properties</a>
+                </div>
+        </div>
+
+<!--Profile Listing Carousel-->
+
+<div class = "row row-content py-5">
+    <div class = "col-12 col-md-7 mt-2 align-self-center">
+        <h3 class="text-center text-md-left">Curated Property Profiles Listings</h3>
+        <div class="d-none d-md-block">
+        <p class = "text-secondary">
+            Property seekers can also explore property profiles listings handpicked by our team for rent,resale & new sale.
+
+        </p>
+        <a role = "button" class = "btn btn-success" href = "{% url 'adminListings' %}">View All Properties</a>
+    </div>
+    </div>
+
+
+    <div class="col-12 col-md-5">
+        {% if adminListings %}
+        <div id="propertyBrands_carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row row-content m-0" role="listbox">
+
+                    {% for listing in adminListings %}
+
+                        {% if forloop.counter == 1 %}
+
+                            <div class = "carousel-item col-12 active">
+                                <div class="card container">
+                                    {% if listing.isVerified %}
+                                    <p class="ribbon">
+                                            Prime
+                                    </p>
+                                    {% endif %}
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <!-- <strong>Details</strong> -->
+
+                                            <br>
+                                            <strong>Connection</strong> : {{ listing.connectionType }}
+                                            <br>
+                                            <strong>Offer Type</strong> : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p> <a href="{% url 'report' %}"><u>Report</u></a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                                {% elif listing.numPropertyType >= 0 %}
+                                                    {% if listing.one_bhk %}
+                                                        1 BHK
+                                                    {% elif listing.two_bhk%}
+                                                        2 BHK
+                                                    {% elif listing.three_bhk%}
+                                                        3 BHK
+                                                    {% elif listing.four_bhk%}
+                                                        4 BHK
+                                                    {% elif listing.fivePlus_bhk%}
+                                                        5+ BHK
+                                                    {% endif %}
+
+                                                    {% if listing.numPropertyType > 0 %}
+                                                    + {{ listing.numPropertyType  }} more
+                                                    {% endif %}
+
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'adminListing' listing.id %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left" id="whatsappBtn2-{{ forloop.counter}}">Whatsapp</button>
+
+                                        <script>
+                                            document.getElementById('whatsappBtn2-{{ forloop.counter }}').addEventListener('click', () => {
+                                                window.location.href = 'https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it'
+                                            })
+                                        </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% else %}
+
+                            <div class = "carousel-item col-12">
+                                <div class="card container">
+                                    {% if listing.isVerified %}
+                                    <p class="ribbon">
+                                            Prime
+                                    </p>
+                                    {% endif %}
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <!-- <strong>Details</strong> -->
+
+                                            <br>
+                                            <strong>Connection</strong> : {{ listing.connectionType }}
+                                            <br>
+                                            <strong>Offer Type</strong> : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p> <a href="{% url 'report' %}"><u>Report</u></a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                                {% elif listing.numPropertyType >= 0 %}
+                                                    {% if listing.one_bhk %}
+                                                        1 BHK
+                                                    {% elif listing.two_bhk%}
+                                                        2 BHK
+                                                    {% elif listing.three_bhk%}
+                                                        3 BHK
+                                                    {% elif listing.four_bhk%}
+                                                        4 BHK
+                                                    {% elif listing.fivePlus_bhk%}
+                                                        5+ BHK
+                                                    {% endif %}
+
+                                                    {% if listing.numPropertyType > 0 %}
+                                                    + {{ listing.numPropertyType  }} more
+                                                    {% endif %}
+
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'adminListing' listing.id %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left" id="whatsappBtn2-{{ forloop.counter}}">Whatsapp</button>
+
+                                        <script>
+                                            document.getElementById('whatsappBtn2-{{ forloop.counter }}').addEventListener('click', () => {
+                                                window.location.href = 'https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it'
+                                            })
+                                        </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                <a class="carousel-control-prev" href="#propertyBrands_carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#propertyBrands_carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        <p class = "d-md-none text-secondary">
+            Property seekers can also explore selected property profiles listings handpicked by our team for rent,resale & new sale.
+
+        </p>
+        <a role = "button" class = "d-md-none btn btn-success" href = "{% url 'adminListings' %}">View All Properties</a>
+    </div>
+
+
+</div>
+
+
+
+
+        <!-- <div class = "row row-content py-5">
+
+
+            <div class="col-12 col-md-5">
+                <h3 class = "d-md-none text-center">Broker Profiles</h3>
+                {% if brokerListings %}
+        <div id="broker_carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row row-content m-0" role="listbox">
+
+                    {% for listing in brokerListings %}
+
+                        {% if forloop.counter == 1 %}
+
+                            <div class = "carousel-item col-12 active">
+                                <div class="card container">
+                                    <p class="ribbon">
+                                        {% if listing.isVerified %}
+                                            Verified
+                                        {% else %}
+                                            Not Verified
+                                        {% endif %}
+                                    </p>
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <strong>Details</strong>
+
+                                            <br>
+                                            [Connection Type] : {{ listing.connectionType }}
+                                            <br>
+                                            [Offer Type] : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p><i class = "fa fa-star" style="color:orange"></i> <a href="{% url 'report' %}">Report</a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                            {% elif listing.numPropertyType >= 0 %}
+                                                {% if listing.one_bhk %}
+                                                    1 BHK
+                                                {% elif listing.two_bhk%}
+                                                    2 BHK
+                                                {% elif listing.three_bhk%}
+                                                    3 BHK
+                                                {% elif listing.four_bhk%}
+                                                    4 BHK
+                                                {% elif listing.fivePlus_bhk%}
+                                                    5+ BHK
+                                                {% endif %}
+
+                                                {% if listing.numPropertyType > 0 %}
+                                                + {{ listing.numPropertyType  }} more
+                                                {% endif %}
+
+                                            {% else %}
+                                                -
+                                            {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'listing' listing.whatsapp %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left"><a href="https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it" style="text-decoration: none; color: white;">Whatsapp</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% else %}
+
+                            <div class = "carousel-item col-12">
+                                <div class="card container">
+                                    <p class="ribbon">
+                                        {% if listing.isVerified %}
+                                            Verified
+                                        {% else %}
+                                            Not Verified
+                                        {% endif %}
+                                    </p>
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <strong>Details</strong>
+
+                                            <br>
+                                            [Connection Type] : {{ listing.connectionType }}
+                                            <br>
+                                            [Offer Type] : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p><i class = "fa fa-star" style="color:orange"></i> <a href="{% url 'report' %}">Report</a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                            {% elif listing.numPropertyType >= 0 %}
+                                                {% if listing.one_bhk %}
+                                                    1 BHK
+                                                {% elif listing.two_bhk%}
+                                                    2 BHK
+                                                {% elif listing.three_bhk%}
+                                                    3 BHK
+                                                {% elif listing.four_bhk%}
+                                                    4 BHK
+                                                {% elif listing.fivePlus_bhk%}
+                                                    5+ BHK
+                                                {% endif %}
+
+                                                {% if listing.numPropertyType > 0 %}
+                                                + {{ listing.numPropertyType  }} more
+                                                {% endif %}
+
+                                            {% else %}
+                                                -
+                                            {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'listing' listing.whatsapp %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left"><a href="https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it" style="text-decoration: none; color: white;">Whatsapp</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                <a class="carousel-control-prev" href="#broker_carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#broker_carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+            <div class = "col-12 col-md-7 mt-2 align-self-center">
+                <h3 class = "d-none d-md-block">Broker Profiles</h3>
+                <p class = "text-secondary">
+                     Browse various housing brokers profiles dealing in rentals & resale.Message them on whatsapp to communicate with them directly to know more about options available with them.
+                </p>
+                <a role = "button" class = "btn btn-success" href = "{% url 'brokerListings' %}">View All Brokers</a>
+            </div>
+        </div> -->
+
+    <!--Profile Listing Carousel-->
+
+        <!-- <div class = "row row-content py-5">
+            <div class = "col-12 col-md-7 align-self-center">
+                <h3 class = "text-center text-md-left">Starred Owner</h3>
+                <div class = "d-none d-md-block">
+                    <p class = "text-secondary">
+                        Browse curated housing in terms of verified properties and monthly picks in segments of buying,renting & reselling by our team.
+                    </p>
+                    <a role = "button" class = "btn btn-success" href = "{% url 'mptpListings' %}">View All Picks</a>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-5">
+                {% if mptpListings %}
+        <div id="mptp_carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row row-content m-0" role="listbox">
+
+                    {% for listing in mptpListings %}
+
+                        {% if forloop.counter == 1 %}
+
+                            <div class = "carousel-item col-12 active">
+                                <div class="card container">
+                                    <p class="ribbon">
+                                        {% if listing.isVerified %}
+                                            Verified
+                                        {% else %}
+                                            Not Verified
+                                        {% endif %}
+                                    </p>
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <strong>Details</strong>
+
+                                            <br>
+                                            [Connection Type] : {{ listing.connectionType }}
+                                            <br>
+                                            [Offer Type] : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p><i class = "fa fa-star" style="color:orange"></i> <a href="{% url 'report' %}">Report</a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                            {% elif listing.numPropertyType >= 0 %}
+                                                {% if listing.one_bhk %}
+                                                    1 BHK
+                                                {% elif listing.two_bhk%}
+                                                    2 BHK
+                                                {% elif listing.three_bhk%}
+                                                    3 BHK
+                                                {% elif listing.four_bhk%}
+                                                    4 BHK
+                                                {% elif listing.fivePlus_bhk%}
+                                                    5+ BHK
+                                                {% endif %}
+
+                                                {% if listing.numPropertyType > 0 %}
+                                                + {{ listing.numPropertyType  }} more
+                                                {% endif %}
+
+                                            {% else %}
+                                                -
+                                            {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'listing' listing.whatsapp %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left"><a href="https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it" style="text-decoration: none; color: white;">Whatsapp</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% else %}
+
+                            <div class = "carousel-item col-12">
+                                <div class="card container">
+                                    <p class="ribbon">
+                                        {% if listing.isVerified %}
+                                            Verified
+                                        {% else %}
+                                            Not Verified
+                                        {% endif %}
+                                    </p>
+                                    <div class="row row-content">
+                                        <div class = "col-11 mt-2 card_name text-info">
+                                            <p>In {{ listing.locality }}</p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-9 text-secondary card_description">
+
+                                            <strong>Details</strong>
+
+                                            <br>
+                                            [Connection Type] : {{ listing.connectionType }}
+                                            <br>
+                                            [Offer Type] : {{ listing.offerType }}
+
+                                            <br>
+                                            <br>
+
+                                            {% if listing.description %}
+                                            <strong>Short Description : </strong>{{ listing.description | truncatechars:17 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class = "col-3 pl-0 card_img">
+                                            <img src="https://img.icons8.com/fluent/48/000000/dog-house.png"/>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content">
+                                        <div class = "col-4">
+                                            <p><i class = "fa fa-star" style="color:orange"></i> <a href="{% url 'report' %}">Report</a></p>
+                                        </div>
+                                        <div class = "col-6">
+                                            <p><i class = "fa fa-map-marker" style="color:red; display : inline"></i> {{ listing.city }}</p>
+                                        </div>
+
+                                        {% if listing.media %}
+
+                                        <div class = "col-2">
+                                            <a class = "pics_link text-secondary pull-right mr-2" href = "{{ listing.media }}" target="blank"><u>Pics</u></a>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>
+                                                Name <span data-toggle = "tooltip" data-html = "true" title = "Yearly" data-placement = "top"></span>
+                                                <span class = "pull-right" style = "color : black">{{ listing.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Property Type
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.propertyType %}
+                                                {{ listing.propertyType }}
+                                            {% elif listing.numPropertyType >= 0 %}
+                                                {% if listing.one_bhk %}
+                                                    1 BHK
+                                                {% elif listing.two_bhk%}
+                                                    2 BHK
+                                                {% elif listing.three_bhk%}
+                                                    3 BHK
+                                                {% elif listing.four_bhk%}
+                                                    4 BHK
+                                                {% elif listing.fivePlus_bhk%}
+                                                    5+ BHK
+                                                {% endif %}
+
+                                                {% if listing.numPropertyType > 0 %}
+                                                + {{ listing.numPropertyType  }} more
+                                                {% endif %}
+
+                                            {% else %}
+                                                -
+                                            {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content card_table">
+                                        <div class = "col-12 text-secondary pt-2" style = "background-color : #f1f1f1">
+                                            <p>Pricing
+                                            <span class = "pull-right" style = "color : black">
+
+                                                {% if listing.price %}
+                                                    INR {{ listing.price | intcomma }}
+                                                {% else %}
+                                                    N/A
+                                                {% endif %}
+
+                                            </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row row-content">
+                                        <div class = "col-12 mr-2 mt-1">
+                                            <button class = "btn btn-warning btn-sm mb-2 pull-right"> <a href="
+
+                                                {% url 'listing' listing.whatsapp %}"
+
+                                                style="text-decoration: none; color: black">Explore</a></button>
+                                            <button class = "btn btn-success btn-sm mb-2 mr-2 pull-left"><a href="https://wa.me/91{{ listing.whatsapp }}?text=Hi!%20I%20saw%20your%20listing%20on%20www.messageproperty.com/{{ listing.whatsapp }}%20and%20I%20want%20to%20know%20more%20details%20about%20it" style="text-decoration: none; color: white;">Whatsapp</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                <a class="carousel-control-prev" href="#mptp_carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#mptp_carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        <div class = "d-md-none">
+            <p class = "text-secondary">
+                Browse curated housing in terms of verified properties and monthly picks in segments of buying,renting & reselling by our team.
+            </p>
+            <a role = "button" class = "btn btn-success" href = "{% url 'mptpListings' %}">View All Picks</a>
+        </div>
+    </div>
+
+
+        </div> -->
+
+        <div class = "row row-content py-5">
+            <div class = "col-12 col-lg-6 align-self-center">
+                <h3>Property Documentation</h3>
+                <p class = "text-secondary">
+                    Our web portal primarily helps housing seekers & housing providers to connect with each other over whatsapp.Our users can also take our services
+                    for documentation work regarding property matters like rental agreements,sale deeds,title checks,property documentation verifications,property loans.Apart
+                    from that,we also help our users in property related tax & legal matters through our curated experts.
+                </p>
+                <button class = "btn btn-success"><a href="https://wa.me/919108095640?text=I%20want%20to%20avail%20Loan%20Services" style="text-decoration: none; color: white;">Avail this service</a></button>
+            </div>
+            <div class = "col-12 col-lg-6"><img src = "{% static 'images/section1.png' %}"></div>
+        </div>
+
+        <div class = "row row-content py-5">
+            <div class = "col-12 col-lg-6 order-1 order-lg-3 align-self-center">
+                <h3>Property Market </h3>
+                <p class = "text-secondary">
+                    We take pride to introduce our interested users to the better way of learning,investing & earning from housing market.
+                </p>
+                <button class = "btn btn-success"><a href="https://wa.me/919108095640?text=I%20want%20to%20join%20Property%20Council%20and%20Syndicate" style="text-decoration: none; color: white;">Join Us</a></button>
+            </div>
+            <div class = "col-12 col-lg-6 order-2"><img src = "{% static 'images/section3.png' %}"></div>
+        </div>
+
+        <!-- <div class = "row row-content py-5">
+            <div class = "col-12 col-lg-6 align-self-center">
+                <h3>Property Syndicate</h3>
+                <p class = "text-secondary">
+                    We are one stop shop solution for all your property matters related to legal & tax consulting.Under our wings,top rated lawyers & tax consultants are just a message away.
+                </p>
+                <button class = "btn btn-success"><a href="https://wa.me/919108095640?text=I%20want%20to%20avail%20Legal%20and%20Taxation%20Consultation" style="text-decoration: none; color: white;">Avail Consultation</a></button>
+            </div>
+            <div class = "col-12 col-lg-6"><img src = "{% static 'images/section3.png' %}"></div>
+        </div> -->
+
+        <!-- <div class = "row row-content py-5">
+            <div class = "col-12 col-lg-6 order-1 order-lg-3 align-self-center">
+                <h3>Property Institute </h3>
+                <p class = "text-secondary">
+                    As our hunger for quality housing & home services is growing with the trust of our users ,we welcome reputed builders & home services vendors to become the part of our journey to provide better, transparent & efficient housing solutions to masses.
+                </p>
+                <button class = "btn btn-success"><a href="https://wa.me/919108095640?text=I%20want%20to%20join%20as%20Builder%20or%20Home%20Services%20Vendor" style="text-decoration: none; color: white;">Join Us</a></button>
+            </div>
+            <div class = "col-12 col-lg-6 order-2"><img src = "{% static 'images/section4.png' %}"></div>
+        </div> -->
+
+    </div>
+
+    <div class = "container py-5">
+        <div class = "row mb-3">
+            <div class = "col-12 text-center">
+                <h3>Home Services</h3>
+            </div>
+        </div>
+        <div class = "row mb-3">
+            <div class = "col-12 col-md-8 offset-md-2 text-center" style = "height : 80px;">
+                <p class = "text-info" id = "news_info">
+                    Explore home services through our trusted partners in painting,cleaning,pest control,electricians,carpenters,plumbers.
+                </p>
+            </div>
+        </div>
+        <div class = "row mb-3">
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "yahoo"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20painting%20services" target = "_blank"></a></div>
+            </div>
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "silicon"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20pest%20services" target = "_blank"></a></div>
+            </div>
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "yourstory"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20cleaning%20services" target = "_blank"></a></div>
+            </div>
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "economic"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20electricity%20services" target = "_blank"></a></div>
+            </div>
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "mintasia"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20carpenter%20services" target = "_blank"></a></div>
+            </div>
+            <div class = "col-6 col-md-4 col-lg-2 mb-2">
+                <div class = "news_pic" id = "entrepreneur"><a class = "example_link" href = "https://wa.me/send?phone=919108095640&text=I%20want%20to%20avail%20plumbing%20services" target = "_blank"></a></div>
+            </div>
+        </div>
+        <hr>
+        <div class = "row">
+            <div class = "col-12 text-center mt-3">
+                <button class = "btn btn-lg btn-warning"><a href="https://wa.me/919108095640?text=I%20want%20to%20avail%20Property%20Services" style="text-decoration: none; color: black;">Avail Home Services</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "container py-5">
+        <div class = "row mb-3">
+            <div class = "col-12 text-center">
+                <h3>Property Management</h3>
+            </div>
+        </div>
+        <div class = "row mb-3">
+            <div class = "col-12 col-md-8 offset-md-2 text-center" style = "height : 80px;">
+                <p class = "text-info" id = "news_info">
+                    Property owners who are abroad or at distant places can also opt for property management services.
+                    Property owners who are abroad or at distant places.
+                </p>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-12 text-center mt-3">
+                <button class = "btn btn-lg btn-warning"><a href="https://wa.me/919108095640?text=I%20want%20to%20avail%20as%20Property%20Management" style="text-decoration: none; color: black;">Avail Management</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "container py-5">
+        <div class = "row mb-3">
+            <div class = "col-12 text-center">
+                <h3>Property Council</h3>
+            </div>
+        </div>
+        <div class = "row mb-3">
+            <div class = "col-12 col-md-8 offset-md-2 text-center" style = "height : 80px;">
+                <p class = "text-info" id = "news_info">
+                    Builders,legal & tax consultants,bank representatives,home services providers can partner with us through below mentioned register icon.
+                </p>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-12 text-center mt-3">
+                <button class = "btn btn-lg btn-warning"><a href="https://wa.me/919108095640?text=I%20want%20to%20register%20as%20Property%20Vendor" style="text-decoration: none; color: black;">Register</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "vw-100 py-4" style = "background-color : #f1f1f1">
+        <div class = "container">
+            <div class = "row row-content">
+                <div class = "col-12 col-md-2">
+                    <p style = "font-size : 24px; color : grey">Frequently Asked Questions</p>
+                </div>
+                <div class = "col-12 col-md-10">
+                    <div class = "row row-content pl-2">
+                        <a class = "faq_q mb-0 text-primary" data-toggle = "collapse" href = "#faq_a1" id = "faq_q1">
+                            How our platform is useful for residential property seekers?
+                        </a>
+                        <p class = "faq_a text-secondary collapse show" id = "faq_a1">
+                            Property Seekers can browse various property profiles as per their requirements to connect with them on whatsapp.It's suggested for seekers to always ask for property details & pictures on whatsapp chat in case they are not made available by the lister on our platform.
+                        </p>
+                    </div>
+                    <div class = "row row-content pl-2">
+                        <a class = "faq_q mb-0 text-primary" data-toggle = "collapse" href = "#faq_a2" id = "faq_q2">
+                            How our platform is useful for residential property owners & providers?
+                        </a>
+                        <p class = "faq_a text-secondary collapse show" id = "faq_a2">
+                            Residential property owners & providers can register for free & make their online property profile that contains details of their property on our platform which can be shared with anyone by them
+                            whenever required for rent & sale on social media,community groups or with a potential property seeker just with the help of a simple web address that will be auto generated for their property profile & will be in the form of MessageProperty.com/YourWhatsappNumber so that
+                            it can be easily remembered.Optionally while such property profile is being created,it can also be made visible on our platform so to get connected to property seekers who visits our website in order to find properties through whatsapp messaging.Once posted,such property profile
+                            can anytime also be made invisible or again visible to property seekers coming on our platform by changing its status through a single click in our user account dashboard after logging in as per whenever its open for rent or sale for any number of times.
+                    </div>
+
+                    <div id = "faq_more" class = "collapse">
+                        <div class = "row row-content pl-2">
+                            <a class = "faq_q mb-0 text-primary" data-toggle = "collapse" href = "#faq_a3" id = "faq_q3">
+                                What are other add on services that message property provides ?
+                            </a>
+                            <p class = "faq_a text-secondary collapse show" id = "faq_a3">
+                                Our users can also avail add on services like property management,painting,cleaning,pest control along with legal,tax & documentation consultation.Apart from them,We also have
+                                some special programs & other reserved services for our paid users.
+                            </p>
+                        </div>
+                        <div class = "row row-content pl-2">
+                            <a class = "faq_q mb-0 text-primary" data-toggle = "collapse" href = "#faq_a4" id = "faq_q4">
+                                Are all the property profiles genuine on message property platform?
+                            </a>
+                            <p class = "faq_a text-secondary collapse show" id = "faq_a4">
+                                Though we always try to keep our platform as clean as possible in terms of genuine profiles,we also encourage our users to stay away or report any such profiles which are putting inappropriate content or seems fishy or posing as someone else or you think are not appropriate because of any reason.As at the core,we are a kind of marketplace
+                                & thus does not take any responsibility in case of any type of loss of yours.
+                            </p>
+                        </div>
+                        <div class = "row row-content pl-2">
+                            <a class = "faq_q mb-0 text-primary" data-toggle = "collapse" href = "#faq_a5" id = "faq_q5">
+                                Should I use Message Property instead of an advisor?
+                            </a>
+                            <p class = "faq_a text-secondary collapse show" id = "faq_a5">
+                                You should use Message Property to connect to network of housing property owners,builders,property investors,property business brands,brokers,
+                            lenders,banks,tax experts,legal experts and advisors.
+
+
+                            </p>
+                        </div>
+
+                    </div>
+                    <a class = "text-primary" id = "faq_toggle" data-toggle = "collapse" href = "#faq_more" style = "font-size : 12px;text-decoration : none !important;">Show More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class = "pt-4">
+        <div class = "container">
+            <div class = "row row-content">
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Owners</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Properties For Sale</a></li>
+                        <li><a class = "foot_link">Investment Opportunities</a></li>
+                        <li><a class = "foot_link">Properties Seeking Loan</a></li>
+                        <li><a class = "foot_link">Property Assets For Sale</a></li>
+                    </ul>
+                    <h6 class = "foot_header">Distribution</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Syndicate</a></li>
+                        <li><a class = "foot_link">Property Council</a></li>
+                        <li><a class = "foot_link">Property Cafe</a></li>
+                        <li><a class = "foot_link">Youtube</a></li>
+                    </ul>
+                </div>
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Property Brands</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Individual Brands</a></li>
+                        <li><a class = "foot_link">Business Brands</a></li>
+                        <li><a class = "foot_link">Corporate Investors</a></li>
+                        <li><a class = "foot_link">Venture Capital Firms</a></li>
+                        <li><a class = "foot_link">Private Equity Firms</a></li>
+                        <li><a class = "foot_link">Family Offices</a></li>
+                        <li><a class = "foot_link">Property Lenders</a></li>
+                    </ul>
+                </div>
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Brokers</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Properties Seeking Advisors</a></li>
+                        <li><a class = "foot_link">Investment Banks</a></li>
+                        <li><a class = "foot_link">Advisors</a></li>
+                        <li><a class = "foot_link">Business Brokers</a></li>
+                        <li><a class = "foot_link">Taxation</a></li>
+                        <li><a class = "foot_link">Financial Consultants</a></li>
+                        <li><a class = "foot_link">Accountants</a></li>
+                        <li><a class = "foot_link">Law Firms</a></li>
+                    </ul>
+                </div>
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Get Started</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Rent your Property</a></li>
+                        <li><a class = "foot_link">Finance your Property</a></li>
+                        <li><a class = "foot_link">Buy a Property</a></li>
+                        <li><a class = "foot_link">Invest in a property</a></li>
+                        <li><a class = "foot_link">Value your property</a></li>
+                        <li><a class = "foot_link">Register as Advisor</a></li>
+                    </ul>
+                </div>
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Home Vendors</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link">Builders</a></li>
+                        <li><a class = "foot_link">Painters</a></li>
+                        <li><a class = "foot_link">Cleaners</a></li>
+                        <li><a class = "foot_link">Pest Control</a></li>
+                        <li><a class = "foot_link">Handyman</a></li>
+                    </ul>
+                </div>
+                <div class = "col-6 col-md-2">
+                    <h6 class = "foot_header">Message Property</h6>
+                    <ul class = "list-unstyled">
+                        <li><a class = "foot_link"><i class = "fa fa-envelope text-info"></i> Contact Us</a></li>
+                        <li><a class = "foot_link"><i class = "fa fa-facebook-square text-primary"></i> Facebook</a></li>
+                        <li><a class = "foot_link"><i class = "fa fa-linkedin-square text-primary"></i> LinkedIn</a></li>
+                        <li><a class = "foot_link"><i class = "fa fa-youtube-play text-danger"></i> YouTube</a></li>
+                        <li><a class = "foot_link"><i class = "fa fa-twitter-square text-primary"></i> Twitter</a></li>
+                        <li><a class = "foot_link"><i class = "fa fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class = "mt-5">
+            <div class = "row row-content">
+                <div class = "col-12 col-md-6">
+                    <p class = "foot_link">Copyright © 2020 Message Property. All Rights Reserved.</p>
+                </div>
+                <div class = "col-12 col-md-6 text-lg-right">
+                    <ul class = "list-inline">
+                        <li class = "list-inline-item ml-1"><a href = "#">Privacy Policy</a></li>
+                        <li class = "list-inline-item ml-1"><a href = "#">Terms of Use</a></li>
+                        <li class = "list-inline-item ml-1"><a href = "#">Refund Policy</a></li>
+                        <li class = "list-inline-item ml-1"><a href = "#">Best Practices</a></li>
+                        <li class = "list-inline-item ml-1"><a href = "#">Sitemap</a></li>
+                    </ul>
+                    <ul class = "list-inline mb-5">
+                        <li class = "list-inline-item ml-1"><button class = "btn btn-xs p-1 btn-primary">VISA</button></li>
+                        <li class = "list-inline-item ml-1"><button class = "btn btn-xs p-1 btn-danger">MasterCard</button></li>
+                        <li class = "list-inline-item ml-1"><button class = "btn btn-xs p-1 btn-info">stripe</button></li>
+                        <li class = "list-inline-item ml-1"><button class = "btn btn-xs p-1 btn-primary">APEX</button></li>
+                        <li class = "list-inline-item ml-1"><button class = "btn btn-xs p-1 btn-success">Net Banking</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+                $('#navigation_bar').toggleClass('scrolled', $(window).scrollTop() > 50);
+            });
+            $("body").scroll(function () {
+                $('#navigation_bar').toggleClass('scrolled', $("body").scrollTop() > 50);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#help_btn').click(function(){
+                $('#help_modal').modal('toggle');
+            });
+            $("#faq_toggle").click(function(){
+                var s = $(this);
+                s.html(s.text() == 'Show More' ? 'Show Less' : 'Show More');
+            });
+
+            /* $("#yahoo").hover(function(){
+                $("#news_info").html("For the World's 460 Million SMEs, FinTech Firm SMERGERS to Become a One-stop Investment Bank.");
+            });
+            $("#silicon").hover(function(){
+                $("#news_info").html("Silicon India names SMERGERS as brand of the year 2015 in Investment Banking Platform Category.");
+            });
+            $("#economic").hover(function(){
+                $("#news_info").html("Bangalore-based online marketplace for small and medium businesses matches profiles with algorithms, filters and ratings.");
+            });
+            $("#yourstory").hover(function(){
+                $("#news_info").html("Bangalore-based SMERGERS, serving the online financial services market, is a technology platform that connects businesses and investors across the globe.");
+            });
+            $("#entrepreneur").hover(function(){
+                $("#news_info").html("SMERGERS, an online M&A firm helping buyers and sellers of SMEs, observes that the M&A activity in Indian SMEs is substantially unorganized.");
+            });
+            $("#mintasia").hover(function(){
+                $("#news_info").html("Nimit Finance buys 50% stake in Gujarat based Avity Agrotech via SMERGERS");
+            }); */
+        });
+    </script>
+
+    <script type="text/javascript">
+
+
+        if ('serviceWorker' in navigator) {
+            console.log("Will the service worker register?");
+            navigator.serviceWorker.register("{% url 'service-worker.js' %}")
+            .then(function(reg){
+                console.log("Yes, it did.");
+            }).catch(function(err) {
+                console.log("No it didn't. This happened: ", err)
+            });
+        }
+
+        let deferredPrompt;
+        let buttonInstall = document.querySelector('#help_btn')
+        buttonInstall.style.display = 'none'
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        buttonInstall.style.display = 'block'
+
+            buttonInstall.addEventListener('click', (e) => {
+                // Hide the app provided install promotion
+                // hideMyInstallPromotion();
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                });
+            });
+
+        });
+      </script>
+
+</body>
+
+</html>

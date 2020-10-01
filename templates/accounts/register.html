@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'brad/css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'brad/css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'brad/css/style.css' %}">
+
+  <title>Message Property - Register</title>
+
+  <style>
+    input::-webkit-inner-spin-button, input::-webkit-outer-spin-button
+    {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number]
+    {
+        -moz-appearance: textfield;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header text-white" style="background-color: #30caa0;">
+              <h4>
+                <i class="fa fa-user-plus"></i> Register</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+
+                    {% csrf_token %}
+
+                    {% include 'partials/_alert.html' %}
+
+                  <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" name="first_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" name="last_name" class="form-control" required>
+                </div>
+                <!-- <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div> -->
+                <div class="form-group">
+                  <label for="_email">Email</label>
+                  <input type="email" name="email" class="form-control" id="_email" required>
+                </div>
+                <div class="form-group">
+                  <label for="_whatsapp">Whatsapp Number</label>
+                  <input type="number" name="whatsapp" class="form-control" id="_whatsapp" required>
+                </div>
+                <div class="form-group">
+                  <label for="_password">Password</label>
+                  <input type="password" name="password" class="form-control" id="_password" required>
+                </div>
+                <div class="form-group">
+                  <label for="_password2">Confirm Password</label>
+                  <input type="password" name="password2" class="form-control" id="_password2" required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-block text-white" style="background-color: #4285f4;">
+              </form>
+              <a href="{% url 'login' %}">Already Registered? Login >></a>
+            </div>
+          </div>
+          <a class="btn btn-success mt-3" href="https://wa.me/919108095640?text=I%20want%20to%20post%20listing%20on%20messageproperty.com%20through%20whatsapp.">OR Post through Whatsapp >></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer id="main-footer" class="py-4 text-white text-center" style="background-color: #30caa0;">
+    Copyright &copy;
+    <span class="year"></span> Message Property
+  </footer>
+
+  <script src="{% static 'brad/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'brad/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'brad/js/main.js' %}"></script>
+</body>
+
+</html>

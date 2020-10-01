@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Property - Private</title>
+</head>
+<body>
+    <h1>Send Content...</h1>
+
+    <form action="" method="POST" id="msgInputForm">
+
+        {% csrf_token %}
+
+        <textarea name="message" style="font-family: 'Times New Roman', Times, serif; font-size: 16px;" cols="175" rows="25" form="msgInputForm" placeholder="Enter your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</body>
+</html>

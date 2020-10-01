@@ -1,0 +1,264 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Property</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- <<link href="https://fonts.googleapis.com/css2?family=Judson&display=swap" rel="stylesheet"> -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@700&display=swap" rel="stylesheet">
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet"> -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body  {
+            font-family: 'Cardo', serif;
+            background: #4285f4;
+        }
+
+        #loginSignupForm {
+
+            background-color: white;
+            box-shadow: 0px 0px 15px gray;
+
+            width: 300px;
+            margin: auto;
+            height: fit-content;
+
+            padding: 25px;
+
+            font-family: inherit;
+        }
+
+        .inpBox {
+            margin: 2px 0px;
+        }
+
+        .field {
+            width: 250px;
+            height: 35px;
+
+            padding: 10px;
+            border: 1px solid rgb(85, 85, 85);
+            border-radius: 5px;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 17px;
+            color: #4285f4;
+        }
+
+        ::placeholder {
+            font-family: inherit;
+        }
+
+        .field:focus {
+            outline: 0;
+            border-color: skyblue;
+            box-shadow: 0px 0px 15px skyblue;
+        }
+
+        .formBtn {
+                display: block;
+                margin: 25px auto;
+
+                width: 150px;
+                height: 40px;
+
+                border: none;
+                border-radius: 5px;
+
+                color: white;
+                font-family: inherit;
+                font-size: 16px;
+        }
+
+        label {
+            font-size: 17px;
+            margin: 0;
+        }
+
+        select {
+            width: 250px;
+            height: 35px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            color: #4285f4;
+
+            padding: 0px 10px;
+
+            border: 1px solid rgb(85, 85, 85);
+            border-radius: 5px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: skyblue;
+            box-shadow: 0px 0px 15px skyblue;
+        }
+
+        input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        #short-description {
+            height: 70px;
+        }
+
+        #recaptcha {
+            position: relative;
+            right: 25.5px;
+            margin-top: 25px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    {% if 'edit-owner-property' in request.path %}
+    <form action="{% url 'listing' listing.whatsapp %}" method="post" id="changeStatusForm">
+        {% csrf_token %}
+        <input type="hidden" name="status" value="{{ listing.propertyStatus }}" required>
+        <input type="hidden" name="cType" value="{{ listing.connectionType }}" required>
+    </form>
+    {% endif %}
+
+    <form action="" id="loginSignupForm" method="POST">
+
+    {% csrf_token %}
+
+        <h1 style="font-family: 'Abril Fatface', cursive; font-size: 28px; text-align: center;"> {% if 'edit-owner-property' in request.path %} Edit {% else %} Create {% endif %} Property Profile</h1>
+
+        {% if 'edit-owner-property' not in request.path %}
+            <h5 style="font-size: 16px;">Please read <a href="{% url 'howItWorks' %}" target="_blank" style="text-decoration: none; color: #4285f4;"><u>How it works</u></a> before posting.</h5>
+        {% endif %}
+
+        {% include 'partials/_alert.html' %}
+
+        <div class="labels"><label for="connection-type">{% if 'edit-owner-property' in request.path %}Posted As{% else %}Posting As{% endif %}</label></div>
+        <div class="inpBox">
+            <select name="connectionType" id="connection-type" required>
+                <option disabled selected value>Select an option</option>
+                <option value="Owner" {% if listing.connectionType == 'Owner' %} selected {% endif %}>Owner</option>
+                <!-- <option value="Starred Owner" {% if listing.connectionType == 'Starred Owner' %} selected {% endif %} >Starred Owner</option> -->
+            </select>
+        </div>
+
+        <div class="labels"><label for="offer-type">Offer Type</label></div>
+        <div class="inpBox">
+            <select name="offerType" id="offer-type" required>
+                <option disabled selected value>Select an option</option>
+                <option value="Rent" {% if listing.offerType == 'Rent' %} selected {% endif %} >Rent</option>
+                <option value="Resale" {% if listing.offerType == 'Resale' %} selected {% endif %} >Resale</option>
+                <option value="New Sale" {% if listing.offerType == 'New Sale' %} selected {% endif %} >New Sale</option>
+            </select>
+        </div>
+
+        <div class="labels"><label for="property-type">Property Type</label></div>
+        <div class="inpBox">
+            <select name="propertyType" id="property-type" required>
+                <option selected disabled value>Select an option</option>
+                <option value="1 BHK" {% if listing.propertyType == '1 BHK' %} selected {% endif %} >1 BHK</option>
+                <option value="2 BHK" {% if listing.propertyType == '2 BHK' %} selected {% endif %} >2 BHK</option>
+                <option value="3 BHK" {% if listing.propertyType == '3 BHK' %} selected {% endif %} >3 BHK</option>
+                <option value="4 BHK" {% if listing.propertyType == '4 BHK' %} selected {% endif %} >4 BHK</option>
+                <option value="5+ BHK" {% if listing.propertyType == '5+ BHK' %} selected {% endif %} >5+ BHK</option>
+            </select>
+        </div>
+
+        <div class="labels"><label for="property-status">Property Status {% if 'edit-owner-property' in request.path %} ({{ listing.propertyStatus }}) {% endif %}</label></div>
+        <div class="inpBox">
+            {% if 'edit-owner-property' not in request.path %}
+            <select name="propertyStatus" id="property-status" required>
+                <option disabled selected value>Select an option</option>
+                <option value="Available" {% if listing.propertyStatus == 'Available' %} selected {% endif %} >Available</option>
+                <option value="Not Available" {% if listing.propertyStatus == 'Not Available' %} selected {% endif %} >Not Available</option>
+            </select>
+            {% else %}
+
+                <a href="javascript:{ document.getElementById('changeStatusForm').submit() }" class="btn {% if listing.propertyStatus == 'Available' %} btn-success {% else %} btn-danger {% endif %}">Change Status</a>
+            {% endif %}
+
+        </div>
+
+        <div class="labels"><label for="pricing">Pricing</label></div>
+        <div class="inpBox"><input class="field" type="number" name="price" id="pricing" value="{{ listing.price }}" required></div>
+
+        <div class="labels"><label for="localityField">Locality</label></div>
+        <div class="inpBox"><input class="field" type="text" name="locality" value="{{ listing.locality }}" id="localityField" required></div>
+
+        <div class="labels"><label for="cityField">City</label></div>
+        <div class="inpBox"><input class="field" type="text" name="city" id="cityField" value="{{ listing.city }}" required></div>
+
+        <div class="labels"><label for="mediaLink">Pics/Video Link (Optional)</label></div>
+        <div class="inpBox"><input class="field" type="url" name="media" id="mediaLink" {% if listing.media %} value="{{ listing.media }}" {% else %} value="http://" {% endif %}></div>
+
+        <div class="labels"><label for="sqft-area">Sqft Area (Optional)</label></div>
+        <div class="inpBox"><input class="field" type="number" name="sqft" id="sqft-area" value="{{ listing.sqft }}"></div>
+
+        <div class="labels"><label for="floor-no">Floor Number (Optional)</label></div>
+        <div class="inpBox"><input class="field" type="number" name="floorNumber" id="floor-no" value="{{ listing.floorNumber }}"></div>
+
+        <div class="labels"><label for="gated-community">Gated Community</label></div>
+        <div class="inpBox">
+            <select name="gatedCommunity" id="gated-community" required>
+                <option disabled selected value>Select an option</option>
+                <option value="Yes" {% if listing.gatedCommunity == 'Yes' %} selected {% endif %} >Yes</option>
+                <option value="No" {% if listing.gatedCommunity == 'No' %} selected {% endif %} >No</option>
+            </select>
+        </div>
+
+        <div class="labels"><label for="short-description">Short Description (Optional)</label></div>
+        <div class="inpBox"><textarea class="field" name="description" id="short-description" form="loginSignupForm" >{{ listing.description }}</textarea></div>
+
+        <div class="labels"><label for="nameField">Your name</label></div>
+        <div class="inpBox"><input class="field" type="text" name="userName" id="nameField" value="{{ listing.name }}" required></div>
+
+        {% if 'edit-owner-property' not in request.path  %}
+
+        <div class="labels"><label for="whatsapp-no">Whatsapp Number (leads will be connecting with you on this whatsapp number,so carefully fill the right whatsapp number)
+        </label></div>
+
+        <div class="inpBox"><input class="field" type="number" name="whatsapp" id="whatsapp-no" value="{{ listing.whatsapp }}" value="{{ listing.whatsapp }}" required></div>
+
+        {% endif %}
+
+        <div id="recaptcha">
+            <div class="g-recaptcha" data-sitekey="6LeB18MZAAAAAA64u7rKDb2J-BY4aslhNuVqUlpt"></div>
+        </div>
+
+        <button class="formBtn" style="background-color: limegreen;" type="submit">{% if 'edit-owner-property' in request.path  %} Save {% else %} Submit {% endif %}</button>
+
+    </form>
+
+    <script src="https://www.google.com/recaptcha/api.js"
+    async defer>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;" id="alertMessage">
+
+                {% if 'safe' in message.tags %}
+                    {{ message|safe }}
+                {% else %}
+                
+                <strong>
+                
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        Error : 
+                    {% else %}
+                        {{ message.tags|title }} : 
+                    {% endif %}
+    
+                    </strong> {{ message }}
+
+                {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <script>
+            setTimeout(() => {
+                $('#alertMessage').fadeOut('slow')
+            }, 10000)
+        </script>
+
+    {% endfor %}
+
+{% endif %}

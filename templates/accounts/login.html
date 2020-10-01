@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'brad/css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'brad/css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'brad/css/style.css' %}">
+
+  <title>Message Property - Login</title>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section id="login" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header text-white" style="background-color: #30caa0;">
+              <h4>
+                <i class="fas fa-sign-in-alt"></i> Login</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+
+                    {% csrf_token %}
+
+                    {% include 'partials/_alert.html' %}
+
+                <div class="form-group">
+                  <label for="_email">Email</label>
+                  <input type="text" name="email" class="form-control" id="_email" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="_password">Password</label>
+                  <input type="password" name="password" class="form-control" id="_password" required>
+                </div>
+                
+                <input type="submit" value="Login" class="btn btn-block text-white" style="background-color: #4285f4;">
+                
+                <a href="{% url 'reset_password' %}">Forgot Password?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="margin: 7.5rem;">&nbsp;</div>
+
+  <!-- Footer -->
+  <footer id="main-footer" class="py-4 text-white text-center" style="background-color: #30caa0;">
+    Copyright &copy;
+    <span class="year"></span> Message Property
+  </footer>
+
+  <script src="{% static 'brad/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'brad/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'brad/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'brad/css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'brad/css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'brad/css/style.css' %}">
+
+  <title>Message Property</title>
+
+  <style>
+    
+    .table th, .table td {
+      vertical-align: middle;
+    }
+
+    #showcase-inner::before {
+      background-color: #4285f4;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+    {% if user.is_authenticated %}
+
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">User Dashboard</h1>
+          <p class="lead">Manage your Message Property account</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Dashboard / </li>
+
+          <form action="{% url 'logout' %}" method="POST" id="logoutForm">
+            {% csrf_token %}
+          </form>
+  
+          <li class="breadcrum-item">
+            <a href="javascript:{document.getElementById('logoutForm').submit()}" style="text-decoration: none; color: red;">
+              <i class="fa fa-sign-out"></i> <u>Logout</u></a>
+            </li>
+
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      {% include 'partials/_alert.html' %}
+      <div class="row">
+        <div class="col-md-12">
+          <h3 style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">Welcome {{ user.first_name }} {{ user.last_name }}</h2>
+          <!-- <p>Here are the property listings that you have inquired about</p> -->
+
+          {% if userListing or adminListings %}
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Properties</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% if userListing %}
+
+              {% for listing in userListing %}
+                <tr>
+                  <td><a href="{% url 'listing' listing.whatsapp %}" target="blank"><u>Go to listing</u></a></td>
+                  <!-- <td>
+                    <a class="btn btn-light" href="{% url 'listing' listing.whatsapp %}">View Listing</a>
+                  </td> -->
+                  <td>
+                    {% if listing.connectionType == 'Owner' or listing.connectionType == 'Starred Owner' %}
+                      <a class="btn btn-dark" href="{% url 'editOwnerListing' %}">Edit Listing</a>
+                    {% else %}
+                      <a class="btn btn-dark" href="{% url 'editPropertyBrandsListing' %}">Edit Listing</a>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+
+              {% endif %}
+
+              {% if adminListings %}
+
+              {% for listing in adminListings %}
+                <tr>
+                  <td><a href="{% url 'adminListing' listing.id %}" target="blank"><u>Go to listing</u></a></td>
+                  <!-- <td>
+                    <a class="btn btn-light" href="{% url 'listing' listing.whatsapp %}">View Listing</a>
+                  </td> -->
+                  <td>
+                      <a class="btn btn-dark" href="{% url 'editAdminListing' listing.id %}">Edit Listing</a>
+                  </td>
+                </tr>
+              {% endfor %}
+
+              {% endif %}
+              
+              
+            </tbody>
+          </table>
+          
+          {% else %}
+
+          <div class = "vh-100" id = "get_started">
+            <div class = "row row-content" style = "text-align : center">
+                <div class = "col-12 pt-4">
+                    <h3>Choose Category</h3>
+                </div>
+                <div class = "col-12 col-md-4 pb-3 pb-md-5 px-5">
+                    <p>Selling or Renting as Owner</p>
+                    
+                    <a type = "button" class = "btn btn-block btn-info" href = "{% url 'ownerForm' %}">Create Property Profile</a>
+                </div>
+                <div class = "col-12 col-md-4 pb-3 pb-md-5 px-5">
+                    <p>Looking to grow your property brand?</p>
+                    
+                    <a type = "button" class = "btn btn-block btn-warning" href = "{% url 'propertyBrandsForm' %}">Create Business Profile</a>
+                </div>
+                <div class = "col-12 col-md-4 pb-5 px-5">
+                    <p>Are you a housing seeker?</p>
+                    
+                    <a type = "button" class = "btn btn-block btn-success" href = "{% url 'listings' %}">Browse as Seeker</a>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <!-- <form action="{% url 'logout' %}" method="POST" id="logoutForm">
+          {% csrf_token %}
+        </form>
+
+        <div {% if  not userListing and not adminListings %} style="display: flex; justify-content: center;" {% endif %} >
+          <a class="btn btn-danger" href="javascript:{document.getElementById('logoutForm').submit()}">
+            <i class="fa fa-sign-out"></i> Logout</a>
+        </div> -->
+        <!-- <a class="btn btn-danger" href="{% url 'logout' %}">Deactivate</a> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="margin: 5rem;">&nbsp;</div>
+
+  <!-- Footer -->
+  <footer id="main-footer" class="py-4 text-white text-center" style="background-color: #4285f4;">
+    Copyright &copy;
+    <span class="year"></span> Message Property
+  </footer>
+
+  {% else %}
+    <h3 style="font-family: Georgia, 'Times New Roman', Times, serif;">You must login to view this page</h3>
+{% endif %}
+
+  <script src="{% static 'brad/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'brad/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'brad/js/main.js' %}"></script>
+</body>
+
+</html>
