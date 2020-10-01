@@ -8,6 +8,8 @@ ist = pytz.timezone('Asia/Kolkata')
 
 currentDate = datetime.date(datetime.now(tz=ist)).strftime('%d')
 
+//It sends email to tenants on the first of every month and to owners, on the second of every month
+
 tenantDate = '1'
 ownerDate = '2'
 
